@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="fabricStyle.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@200&family=Cormorant:wght@300&family=JetBrains+Mono:wght@100&family=Montserrat:wght@100;400&family=Oxygen:wght@300&family=Sora:wght@100&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="main d-flex flex-column align-items-start">
+            <div class="float-left d-flex" style="width: 355px;">
+                <div class="tool-bar d-flex flex-column align-items-center position-relative">
+                    <div >
+                        <input class="d-none" name="feature" id="icon-text" type="checkbox">
+                        <label for="icon-text" class="text-tool"><i class="fas fa-font"></i></label>
+                        <div class="form-text align-items-center">
+                            <form class="ml-5 my-2 d-flex form-add-text">
+                                <textarea type="text" placeholder="Text..." id="text-content" required></textarea>
+                                <div>
+                                    <label  for="font-family">Font</label>
+                                    <select name="font-family" id="font-family">
+                                        <option value="Sora" style="font-family: sora;">Sora</option>
+                                        <option value="BioRhyme" style="font-family: biorhyme;">BioRhyme</option>
+                                        <option value="Cormorant" style="font-family: cormorant;">Cormorant</option>
+                                        <option value="JetBrains Mono" style="font-family: jetbrains mono;">JetBrains Mono</option>
+                                        <option value="Montserrat" style="font-family: montserrat;" selected>Montserrat</option>
+                                        <option value="Oxygen" style="font-family: oxygen;">Oxygen</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="font-size">Size</label>
+                                    <input id="font-size" type="number" min="1" size="4" maxlength="4" value="13" step="2" max="99">
+                                </div>
+                                
+                                <div>
+                                    <input class="d-none" type="checkbox" id="font-bold">
+                                    <label class="font-weight-bold rounded px-1 text-light" for="font-bold">B</label>
+                                </div>
+                                <div>
+                                    <input class="d-none" type="checkbox" id="font-normal">
+                                    <label class="font-weight-normal rounded px-1 text-light" for="font-normal">N</label>
+                                </div>
+                                <div>
+                                    <input class="d-none" type="checkbox" id="font-italic">
+                                    <label class="font-italic rounded px-1 text-light" for="font-italic">I</label>
+                                </div>
+                                <div>
+                                    <input class="d-none" type="checkbox" id="text-underline">
+                                    <label for="text-underline" class="text-underline rounded px-1 text-light"><u>U</u></label>
+                                </div>
+                                <div>
+                                    <label for="text-color">Color</label>
+                                    <input type="color" id="text-color" name="text-color"
+                                           value="#000000">
+                                </div>
+                                <div>
+                                    <label for="bg-color">Background</label>
+                                    <input type="color" id="bg-color" name="bg-color"
+                                           value="#ffffff">
+                                </div>
+                                <button type="submit" class="rounded" id="add-text">Add</button>
+                            </form>
+            
+                        </div>
+                    </div>
+                    <div >
+                        <input class="d-none" type="checkbox" name="feature" id="icon-image">
+                        <label for="icon-image" class="image-tool">
+                            <i class="fas fa-file-image"></i>
+                        </label>
+                    </div>
+                </div>
+                <canvas id="canvas" width="300" height="160"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/460/fabric.min.js" integrity="sha512-ybPp3kCrNQXdvTfh99YLIdnajWnQvHuEKDJ+b26mxI9w+pLhnBo3HmNLJ1pEUBFO1Q0bfJxApeqecNbmaV763g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="main.js"></script>
+</body>
+</html>

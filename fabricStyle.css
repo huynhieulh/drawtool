@@ -1,0 +1,84 @@
+body{
+   background-color: #eee !important;
+}
+.main{
+    padding-top: 100px;
+    width: 400px;
+    
+}
+.fabric{
+    width: 300px;
+    height: 96px;
+    background-color: aqua;
+}
+
+.form-text{
+    width: 103vh;
+    background-color: rgb(64, 64, 71);
+    border-radius: 5px 5px 5px 0px;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s linear;
+}
+
+.form-add-text{
+    gap: 15px;
+}
+
+#font-bold:checked ~ .font-weight-bold{
+    background-color: rgb(38, 37, 54);
+}
+#font-normal:checked ~ .font-weight-normal{
+    background-color: rgb(38, 37, 54);
+}
+#font-italic:checked ~ .font-italic{
+    background-color: rgb(38, 37, 54);
+}
+#text-underline:checked ~ .text-underline{
+    background-color: rgb(38, 37, 54);
+}
+.tool-bar{
+    width: 45px;
+    height: 90px;
+    background-color: rgb(64, 64, 71);
+    color: #ffffff;
+    gap: 5px;
+    border-radius: 0px 0px 5px 5px;
+    margin-right: 10px;
+}
+
+.text-tool{
+    margin-top: 5px;
+    padding: 5px 8px 0px 8px;
+    border-radius: 5px;
+}
+
+#icon-text:checked ~ .text-tool{
+    background-color: rgb(38, 37, 54);
+}
+
+#icon-text:checked ~ .form-text{
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+#icon-image:checked ~ .image-tool{
+    background-color: rgb(38, 37, 54);
+}
+
+.image-tool{
+    padding: 5px 8px 0px 8px;
+    border-radius: 5px;
+}
+
+.text-tool:hover, .image-tool:hover{
+    background-color: rgb(38, 37, 54);
+}
+
+input[type='number']{
+    width: 40px;
+} 
