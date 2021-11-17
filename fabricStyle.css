@@ -13,11 +13,10 @@ body{
 }
 
 .form-text{
-    width: 103vh;
+    top:18%;
     background-color: rgb(64, 64, 71);
     border-radius: 5px 5px 5px 0px;
     position: absolute;
-    top: -100%;
     left: 0;
     opacity: 0;
     visibility: hidden;
@@ -55,17 +54,17 @@ body{
     padding: 5px 8px 0px 8px;
     border-radius: 5px;
 }
-
+/* 
 #icon-text:checked ~ .text-tool{
     background-color: rgb(38, 37, 54);
 }
 
-#icon-text:checked ~ .form-text{
+*/
+.show{
     display: flex;
     opacity: 1;
     visibility: visible;
-}
-
+} 
 #icon-image:checked ~ .image-tool{
     background-color: rgb(38, 37, 54);
 }
@@ -75,9 +74,6 @@ body{
     border-radius: 5px;
 }
 
-.text-tool:hover, .image-tool:hover{
-    background-color: rgb(38, 37, 54);
-}
 
 input[type='number']{
     width: 40px;

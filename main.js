@@ -1,75 +1,96 @@
-$(document).ready(function(){
+var canvas = new fabric.Canvas('canvas',{
+    backgroundColor: '#ffffff',
+});
 
-    var canvas = new fabric.Canvas('canvas',{
-        backgroundColor: '#ffffff',
-    });
+var appObject = function() {
 
-    function clearInput(){
-        const content = $('#text-content').val('');
-        const font = $('#font-family').val('Montserrat');
-        const size = $('#font-size').val('13');
-        const bold =  $('#font-bold').attr('checked', false);
-        const normal =  $('#font-normal').attr('checked', false);
-        const italic =  $('#font-italic').attr('checked', false);
-        const under =  $('#text-underline').attr('checked', false);
-        const color =  $('#text-color').val('#000000');
-        const bg =  $('#bg-color').val('#ffffff');
-    }
+    return {
+      __canvas: canvas,
+      __tmpgroup: {},
+  
+      addText: function() {
+        var newID = (new Date()).getTime().toString().substr(5);
+        var text = new fabric.IText('Text...', {
+          fontFamily: 'arial black',
+          left: 100,
+          top: 50,
+          myid: newID,
+          objecttype: 'text'
+        });
+  
+        this.__canvas.add(text);
+        this.__canvas.bringToFront(text); //Đưa Text lên trên Cùng
+        // this.addLayer(newID, 'text');
+        this.__canvas.on('selection:created', function() {
+            console.log('selected a text');
+            $('.form-text').addClass('show');
+        });
+        this.__canvas.on('selection:cleared', function() {
+            console.log('deselected a text');
+            $('.form-text').removeClass('show');
+        });
+      },
 
-    function addText(content, font, size, bold, normal, italic, under, color, bg){
-        if(content){
-            const text = new fabric.IText(content,{
-                fontFamily: font,
-                fontSize: size,
-                fill: color,
-                left: 120,
-                top: 50,
-            });
-            if(bold){
-                text.set('fontWeight', 'bold');
-            }
-            if(normal){
-                text.set('fontWeight', 'normal');
-            }
-            if(italic){
-                text.set('fontStyle', 'italic');
-            }
-            if(under){
-                text.set('underline', 'true');
-            }
-            if(bg != '#ffffff'){
-                text.set('textBackgroundColor', bg);
-            }
+      addImage: function(){
+        //var newID = (new Date()).getTime().toString().substr(5);
+        var img = fabric.Image.fromURL('default.jpg',function(oImg) {
+            oImg.scale(0.2);
+            canvas.add(oImg);
+        },{
+            // width:150,
+            // height: 80,
+            // top: 20,
+            // left:37
+        });
 
-            canvas.add(text);
-            clearInput()
-            text.on('selected', function() {
-                $('#text-content').val(text.text);
-
-                // this.text =  $('#text-content').on('keyup change', function (e) { 
-                //     e.preventDefault();
-                //     return $('#text-content').val();
-                // });
-              });
+        //tai nay nay ko co this nen ko chon dc object
+        this.__canvas.bringToFront(img); //Đưa Ảnh lên trên cùng
+        this.__canvas.on('selection:created', function() {
+            console.log('selected a image');
+        });
+        this.__canvas.on('selection:cleared', function() {
+            console.log('deselected a image');
+        });
+      },
+    //   setTextParam: function(param, value) {
+    //     var obj = this.__canvas.getActiveObject();
+    //     if (obj) {
+    //       if (param == 'color') {
+    //         obj.setColor(value);
+    //       } else {
+    //         obj.set(param, value);
+    //       }
+    //       this.__canvas.renderAll();
+    //     }
+    //   },
+      setTextValue: function(value) {
+        var obj = this.__canvas.getActiveObject();
+        if (obj) {
+        
+          obj.set('text',value);
+          this.__canvas.renderAll();
         }
-    }
-    
-    $('#add-text').click(function (e) { 
-        e.preventDefault();
-        const content = $('#text-content').val();
-        const font = $('#font-family').val();
-        const size = $('#font-size').val();
-        const bold =  $('#font-bold').is(':checked');
-        const normal =  $('#font-normal').is(':checked');
-        const italic =  $('#font-italic').is(':checked');
-        const under =  $('#text-underline').is(':checked');
-        const color =  $('#text-color').val();
-        const bg =  $('#bg-color').val();
+      },
+      
+      addLayer: function() {
+  
+      }
+  
+    };
+  }
 
-        console.log(content, font, size, bold, normal, italic, under, color, bg);
-        addText(content, font, size, bold, normal, italic, under, color, bg);
+$(document).ready(function(){
+    var app = appObject();
+    $('.text-tool').click(function (e) { 
+        app.addText();
     });
-    
+    $('.image-tool').click(function (e) { 
+        app.addImage();
+    });
+
+    $('#text-content').keyup(function (e) {     
+        app.setTextValue($(this).val());
+    });
     // var text = new fabric.IText('hello world', { 
     //     left: 100, 
     //     top: 100, 
