@@ -3,7 +3,6 @@ body{
 }
 .main{
     padding-top: 100px;
-    width: 400px;
     
 }
 .fabric{
@@ -12,40 +11,38 @@ body{
     background-color: aqua;
 }
 
+#text-content{
+    width: 125px;
+}
+
 .form-text{
-    top:18%;
-    background-color: rgb(64, 64, 71);
+    top:23%;
     border-radius: 5px 5px 5px 0px;
     position: absolute;
-    left: 0;
+    left: 55px;
     opacity: 0;
     visibility: hidden;
     transition: 0.25s linear;
 }
 
-.form-add-text{
-    gap: 15px;
+.form-image{
+    top:10%;
+    background-color: rgb(64, 64, 71);
+    border-radius: 5px 5px 5px 0px;
+    position: absolute;
+    left: 55px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s linear;
 }
 
-#font-bold:checked ~ .font-weight-bold{
-    background-color: rgb(38, 37, 54);
-}
-#font-normal:checked ~ .font-weight-normal{
-    background-color: rgb(38, 37, 54);
-}
-#font-italic:checked ~ .font-italic{
-    background-color: rgb(38, 37, 54);
-}
-#text-underline:checked ~ .text-underline{
-    background-color: rgb(38, 37, 54);
-}
 .tool-bar{
     width: 45px;
-    height: 90px;
+    height: 80px;
     background-color: rgb(64, 64, 71);
     color: #ffffff;
     gap: 5px;
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 5px 0px 5px 5px;
     margin-right: 10px;
 }
 
@@ -60,6 +57,17 @@ body{
 }
 
 */
+
+.export-json, .import-json, .delete-btn, .console-base64{
+    height: 35px;
+    transition: 0.25s linear;
+    margin-left: 5px;
+    padding: 0px 10px 0px 10px;
+    border-radius: 5px; 
+}
+.import-json{
+    padding-top: 4px;
+}
 .show{
     display: flex;
     opacity: 1;
@@ -73,8 +81,3 @@ body{
     padding: 5px 8px 0px 8px;
     border-radius: 5px;
 }
-
-
-input[type='number']{
-    width: 40px;
-} 

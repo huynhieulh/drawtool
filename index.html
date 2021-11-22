@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Draw Tool Fabricjs</title>
     <link rel="stylesheet" href="fabricStyle.css">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,12 +20,26 @@
     <div class="container">
         <div class="main d-flex flex-column align-items-start position-relative">
             <div class="form-text align-items-center">
-                <form class="ml-5 my-2 d-flex form-add-text">
-                    <input type="text" class="rounded" id="text-content"></input>
-                    <button type="button" class="rounded px-1 mr-2" id="add-text"><i class="bi bi-pencil-square"></i></button>
-                </form>
+                <input type="text" class="rounded" id="text-content"></input>
+                <label for="font">Font:</label>
+                <select id="font" data-type="fontFamily">
+                    <option value="BioRhyme" style="font-family: BioRhyme;">BioRhyme</option>
+                    <option value="Cormorant" style="font-family: Cormorant;">Cormorant</option>
+                    <option value="JetBrains Mono" style="font-family: JetBrains Mono;">JetBrains Mono</option>
+                    <option value="Montserrat" style="font-family: Montserrat;">Montserrat</option>
+                    <option value="Oxygen" style="font-family: Oxygen;">Oxygen</option>
+                    <option value="Sora" style="font-family: Sora;">Sora</option>
+                    <option value="arial" selected style="font-family: arial;">arial</option>
+                </select>
             </div>
-            <div class="float-left d-flex" style="width: 355px;">
+            <div class="form-image">
+                <img src="df.png" alt="" width="100px" id="image-default">
+                <div style="width: 0;">
+                    <input type="file" id="input-image" class="d-none" accept="image/*" alt="">
+                    <label for="input-image" id="input-image-btn"><i class="bi bi-pencil-square"></i></label>
+                </div>
+            </div>
+            <div class="float-left d-flex" >
                 <div class="tool-bar d-flex flex-column align-items-center ">
                     <div >
                         <!-- <input class="d-none" name="feature" id="icon-text" type="checkbox"> -->
@@ -40,6 +54,18 @@
                 </div>
                 <canvas id="canvas" width="300" height="160">
                 </canvas>
+                <div class="d-flex flex-column" style="gap:5px">
+                    <button class="delete-btn btn-danger justify-content-center align-items-center">Delete</button>
+                    <button class="export-json btn-primary">Export JSON</button>
+                    <div>
+                        <input type="file" id="input-txt" class="d-none" accept=".txt"/>
+                        <label for="input-txt" class="import-json btn-secondary" style="margin-bottom: 0;">
+                            Import JSON
+                        </label>
+                    </div>
+                    <button class="console-base64 btn-info">Base64</button>
+                </div>
+                
             </div>
         </div>
     </div>
