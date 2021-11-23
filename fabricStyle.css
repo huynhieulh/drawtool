@@ -58,6 +58,12 @@ body{
 
 */
 
+.delete-btn{
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s linear;
+}
+
 .export-json, .import-json, .delete-btn, .console-base64{
     height: 35px;
     transition: 0.25s linear;
