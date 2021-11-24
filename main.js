@@ -181,6 +181,7 @@ $(document).ready(function(){
   //create new object 
   var app = appObject();
 
+  //Object được kéo thả ngoài phạm vi canvas tối đa 50% kích thước của object
   canvas.on('object:moving', function(e){
     var obj = e.target;
       //lay mot nua chieu rong obj
@@ -189,8 +190,8 @@ $(document).ready(function(){
       var halfh = (obj.height* obj.scaleY)/2;
       var bounds = {
         tl: {x: halfw, y:halfh},
-        // x: cách bên trái = chiều ngang canvas - halfw
-        // y: cách ở trên = chiều cao canvas - halfh
+        // x: cách bên dưới = chiều ngang canvas - halfw
+        // y: cách bên phải = chiều cao canvas - halfh
         br: {x: obj.canvas.width - halfw, y: obj.canvas.height - halfh}
       };
 
@@ -205,7 +206,6 @@ $(document).ready(function(){
           obj.top = Math.min(obj.top, bounds.br.y );  
           obj.left = Math.min(obj.left, bounds.br.x );  
       }
-
 });
 
   
@@ -221,7 +221,7 @@ $(document).ready(function(){
       app.addImage(imgElement);
   });
 
-  //Change text content
+  //Change text content of object
   $('#text-content').keyup(function (e) {     
       app.setTextValue($(this).val());
   });
@@ -241,9 +241,9 @@ $(document).ready(function(){
     const reader = new FileReader();
   
     reader.onload =function () {
-      // convert image file to base64 string
+      //show image have changed
       $('#image-default').attr("src", reader.result);
-      //const data = dataURItoBlob(reader.result);
+      //set image value to object
       app.setImageValue(reader.result);
     }
   
